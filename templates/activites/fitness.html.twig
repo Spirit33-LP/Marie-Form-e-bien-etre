@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Fitness' %}
+
+{% block content %}
+    <main id="fitness">
+        <aside class="col-2">
+            <div>activités</div>
+            <div><a href="{{ path('pilates')}}">pilates</a></div>
+            <div><a href="{{ path('stretching')}}">stretching</a></div>
+            <div><a href="{{ path('marche_nordique')}}">Marche Nordique</a></div>
+            <div><a href="{{ path('course')}}">Course</a></div>
+            <div><a class="nav-link disabled" href="{{ path('fitness')}}">Fitness</a></div>
+            <div><a href="{{ path('evenementiel')}}">Evenementiel</a></div>
+        </aside>
+        <div class="activite-texte col-10">
+            <h2>
+                FITNESS
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae porro dignissimos magnam aut sit eligendi amet saepe repellendus sint?
+                Rem perspiciatis, et corrupti necessitatibus deleniti obcaecati quia rerum amet reiciendis.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae porro dignissimos magnam aut sit eligendi amet saepe repellendus sint?
+                Rem perspiciatis, et corrupti necessitatibus deleniti obcaecati quia rerum amet reiciendis.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae porro dignissimos magnam aut sit eligendi amet saepe repellendus sint?
+                Rem perspiciatis, et corrupti necessitatibus deleniti obcaecati quia rerum amet reiciendis.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae porro dignissimos magnam aut sit eligendi amet saepe repellendus sint?
+                Rem perspiciatis, et corrupti necessitatibus deleniti obcaecati quia rerum amet reiciendis.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae porro dignissimos magnam aut sit eligendi amet saepe repellendus sint?
+                Rem perspiciatis, et corrupti necessitatibus deleniti obcaecati quia rerum amet reiciendis.
+            </p>
+        </div>
+    </main>
+
+{% endblock %}
