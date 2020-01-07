@@ -4,15 +4,7 @@
 
 {% block content %}
     <main id="fitness">
-        <aside class="col-2">
-            <div>activités</div>
-            <div><a href="{{ path('pilates')}}">pilates</a></div>
-            <div><a href="{{ path('stretching')}}">stretching</a></div>
-            <div><a href="{{ path('marche_nordique')}}">Marche Nordique</a></div>
-            <div><a href="{{ path('course')}}">Course</a></div>
-            <div><a class="nav-link disabled" href="{{ path('fitness')}}">Fitness</a></div>
-            <div><a href="{{ path('evenementiel')}}">Evenementiel</a></div>
-        </aside>
+        {% include 'commun/_navbar_activites.html.twig' %}
         <div class="activite-texte col-10">
             <h2>
                 FITNESS

@@ -14,6 +14,7 @@ class EvenementielController extends AbstractController
     {
         return $this->render('activites/evenementiel.html.twig', [
             'controller_name' => 'EvenementielController',
+            'current_menu' => 'evenementiel'
         ]);
     }
 }

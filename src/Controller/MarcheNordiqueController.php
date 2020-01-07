@@ -14,6 +14,7 @@ class MarcheNordiqueController extends AbstractController
     {
         return $this->render('activites/marche_nordique.html.twig', [
             'controller_name' => 'MarcheNordiqueController',
+            'current_menu' => 'marche_nordique'
         ]);
     }
 }

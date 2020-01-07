@@ -14,6 +14,7 @@ class StretchingController extends AbstractController
     {
         return $this->render('activites/stretching.html.twig', [
             'controller_name' => 'StretchingController',
+            'current_menu' => 'stretching'
         ]);
     }
 }

@@ -14,6 +14,7 @@ class CourseController extends AbstractController
     {
         return $this->render('activites/course.html.twig', [
             'controller_name' => 'CourseController',
+            'current_menu' => 'course'
         ]);
     }
 }

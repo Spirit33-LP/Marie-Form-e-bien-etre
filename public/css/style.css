@@ -11,35 +11,39 @@ html {
     scroll-behavior: smooth;
 }
 
+@font-face {
+    font-family: "Kiona-Regular";
+    src: url("../fonts/Kiona-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Kiona-Itallic";
+    src: url("../fonts/Kiona-Itallic.ttf");
+}
+
+header, h1, h2, h3, h4, h5, h6, p{
+    font-family: Kiona-Regular;
+}
+
+h2{
+    font-size: 4rem;
+}
+
 /***************************************************************************/
 /****************************** HEADER NAVBAR ******************************/
 /***************************************************************************/
-header {
-/*  display: flex;
-    align-content: center;
-    height: 10vh;
-    position: absolute;
-    width: 100%;
-    z-index: 1;  */
-}
-
-/*nav {
-    width: 100%;
-    padding: 0;
-}*/
-
-a, a:hover {
-    text-decoration: none;
-    color: black;
-}
-
-a:hover{
-    color: #ffcc00;
+.navbar a:hover{
+    color: #78B281;
 }
 
 /***************************************************************************/
 /********************************* FOOTER **********************************/
 /***************************************************************************/
+footer{
+    width: 100%;
+    height: 150px;
+    background-color: #B0413E;
+}
 
 /***************************************************************************/
 /******************************** HOMEPAGE *********************************/
@@ -53,7 +57,7 @@ a:hover{
     border-top: black dashed 1px;
 }
 
-/********************************* ACCUEIL *********************************/
+/******************************** ACCUEIL **********************************/
 #accueil {
     background-size: cover;
     background-image: url("https://cache.marieclaire.fr/data/photo/w1000_ci/4w/livre-pilates-mollie-stansbury.jpg");
@@ -84,19 +88,18 @@ a:hover{
     font-style: oblique;
     position: absolute;
     display: block;
-    padding: 25%;
 }
 
 #activites img{
-    width: 480px;
+    width: 100%;
     height: 280px;
     opacity: 0.4;
+    transition-duration: 0.6s;
 }
 
 #activites img:hover{
     opacity: 1;
     transition-delay: 0.15s;
-    transition-duration: 0.6s;
 }
 
 /*************************** TARIFS/REGLEMENTS *****************************/
@@ -170,8 +173,15 @@ a:hover{
     background-size: cover;
 }
 
+.activite-texte{
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 130px 150px 0px 300px;
+    text-align: justify;
+    color: white;
+}
+
+/********************************** ASIDE **********************************/
 .aside-activites{
-    width: 20%;
     background-color: #78B281;
     text-transform: uppercase;
     color: white;
@@ -189,22 +199,15 @@ a:hover{
 
 .aside-activites .active{
     color: #777777;
+    font-weight: bolder;
+    font-style: oblique;
 }
 
 .aside-activites-title{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: bolder;
     color: black;
-}
-
-.activite-texte{
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 130px 150px 0px 300px;
-    text-align: justify;
-    color: white;
-}
-
-h2{
-    font-size: 4rem;
+    border: white 1px solid;
 }
 
 /********************************* PILATES *********************************/
@@ -230,14 +233,18 @@ h2{
     background-image: url("https://cache.cosmopolitan.fr/data/photo/w1000_ci/55/course.jpg");
 }
 
-/********************************** FITNESS *********************************/
+/********************************* FITNESS *********************************/
 #fitness{
     background-image: url("http://www.love-fitness.fr/wp-content/uploads/2015/12/Fotolia_72752793_Subscription_Monthly_XXL1-1024x683.jpg");
     background-position-y: bottom;
 }
 
-/******************************** EVENEMENTIEL ******************************/
+/******************************* EVENEMENTIEL ******************************/
 #evenementiel{
     background-image: url("https://www.photographe-professionnel-evenementiel.fr/wp-content/uploads/2015/12/Marathon-Nice-Cannes_081115-090507.jpg");
     background-position-y: center;
 }
+
+/***************************************************************************/
+/********************************* GALLERIE ********************************/
+/***************************************************************************/

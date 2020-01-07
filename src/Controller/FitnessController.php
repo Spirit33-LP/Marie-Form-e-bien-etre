@@ -14,6 +14,7 @@ class FitnessController extends AbstractController
     {
         return $this->render('activites/fitness.html.twig', [
             'controller_name' => 'FitnessController',
+            'current_menu' => 'fitness'
         ]);
     }
 }

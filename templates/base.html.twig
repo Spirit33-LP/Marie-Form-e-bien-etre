@@ -54,31 +54,34 @@
                             <a class="nav-link" href="{{ path('home')}}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#biographie">Biographie</a>
+                            <a class="nav-link" href="{{ path('home')}}#biographie">Biographie</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Activités
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#activites">Voir les activités</a>
+                                <a class="dropdown-item" href="{{ path('home')}}#activites">Les activités</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ path('pilates')}}">Pilates</a>
                                 <a class="dropdown-item" href="{{ path('stretching')}}">Stretching</a>
                                 <a class="dropdown-item" href="{{ path('marche_nordique')}}">Marche Nordique</a>
-                                <a class="dropdown-item" href="{{ path('course')}}">Course</a>
+                                <a class="dropdown-item" href="{{ path('course')}}">Course à pied</a>
                                 <a class="dropdown-item" href="{{ path('fitness')}}">Fitness</a>
                                 <a class="dropdown-item" href="{{ path('evenementiel')}}">Evenementiel</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('galerie')}}#activites">Galerie de photos</a>
+
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tarifs-reglements">Tarifs et réglements</a>
+                            <a class="nav-link" href="{{ path('home')}}#tarifs-reglements">Tarifs et réglements</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#agenda-reservation">Agenda et réservation</a>
+                            <a class="nav-link" href="{{ path('home')}}#agenda-reservation">Agenda et réservation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
+                            <a class="nav-link" href="{{ path('home')}}#contact">Contact</a>
                         </li>
                     </ul>
                 </div>
