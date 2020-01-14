@@ -21,29 +21,29 @@ html {
     src: url("../fonts/Kiona-Itallic.ttf");
 }
 
-header, h1, h2, h3, h4, h5, h6, p{
+body {
     font-family: Kiona-Regular;
 }
 
-h2{
+h2 {
     font-size: 4rem;
 }
 
 /***************************************************************************/
 /****************************** HEADER NAVBAR ******************************/
 /***************************************************************************/
-.navbar a:hover{
+.navbar a:hover {
     color: #78B281;
 }
 
 /***************************************************************************/
 /********************************* FOOTER **********************************/
 /***************************************************************************/
-footer{
+/*footer {
     width: 100%;
     height: 150px;
     background-color: #B0413E;
-}
+}*/
 
 /***************************************************************************/
 /******************************** HOMEPAGE *********************************/
@@ -53,8 +53,11 @@ footer{
     height: 100vh;
     text-align: center;
     background-color: #78B281;
-    border-bottom: black dashed 1px;
-    border-top: black dashed 1px;
+    border: dashed 1px black;
+}
+
+#accueil h2, #biographie h2, #activites h2, #tarifs-reglements h2, #agenda-reservation h2, #contact h2 {
+    padding: 10px 0px;
 }
 
 /******************************** ACCUEIL **********************************/
@@ -64,17 +67,17 @@ footer{
 }
 
 /******************************* BIOGRAPHIE ********************************/
-.biographie-photo-profil{
+/*.biographie-photo-profil {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
-}
+}*/
 
-.biographie-background-texte{
+.biographie-background-texte {
     background: rgba(130, 255, 128,0.5);
-    padding: 150px 70px 70px;
+    padding: 80px;
     margin: 170px 150px;
     text-align: justify;
     border-radius: 60px;
@@ -82,32 +85,24 @@ footer{
 }
 
 /******************************** ACTIVITES ********************************/
-#activites h3{
-    text-transform: uppercase;
-    font-size: 2.5rem;
-    font-style: oblique;
-    position: absolute;
-    display: block;
-}
-
-#activites img{
+/*#activites img {
     width: 100%;
     height: 280px;
     opacity: 0.4;
     transition-duration: 0.6s;
 }
 
-#activites img:hover{
+#activites img:hover {
     opacity: 1;
     transition-delay: 0.15s;
-}
+}*/
 
 /*************************** TARIFS/REGLEMENTS *****************************/
 .tarifs-reglements-tableau {
-    border: black dashed 1px;
+    border: yellow dashed 1px;
 }
 
-.tarifs-reglements-background-texte{
+.tarifs-reglements-background-texte {
     background: rgba(130, 255, 128,0.5);
     padding: 100px 70px 70px;
     margin: 20px 150px;
@@ -116,15 +111,16 @@ footer{
 }
 
 /************************** AGENDA/RESERVATIONS ****************************/
-.agenda-reservation-block{
+.agenda-reservation-block {
     display: flex;
     justify-content: space-around;
 }
 
-.agenda-reservation-agenda{
+.agenda-reservation-agenda {
 }
 
-.agenda-reservation-reservation{
+
+.agenda-reservation-reservation {
     width: 500px;
     height: 500px;
     background-color: #c8c8c8;
@@ -133,12 +129,12 @@ footer{
 }
 
 /********************************* CONTACT *********************************/
-.contact-block{
+.contact-block {
     display: flex;
     justify-content: space-around;
 }
 
-.contact-info{
+.contact-info {
     width: 500px;
     height: 500px;
     background-color: #c8c8c8;
@@ -146,15 +142,15 @@ footer{
     padding: 40px;
 }
 
-.contact-carte{
+.contact-carte {
     width: 500px;
 }
 
-.contact-carte-google{
+.contact-carte-google {
     position: absolute;
 }
 
-.contact-zone{
+.contact-zone {
     position: relative;
     height: 280px;
     width: 280px;
@@ -166,81 +162,88 @@ footer{
 /***************************************************************************/
 /******************************** ACTIVITES ********************************/
 /***************************************************************************/
-#pilates, #stretching, #marche-nordique, #course, #fitness, #evenementiel{
+#activite-page, #pilates, #stretching, #marche-nordique, #course, #fitness, #evenementiel {
     width: 100%;
     height: 100vh;
     display: flex;
     background-size: cover;
 }
 
-.activite-texte{
+.activite-texte {
     background-color: rgba(0, 0, 0, 0.6);
     padding: 130px 150px 0px 300px;
     text-align: justify;
     color: white;
+
 }
 
 /********************************** ASIDE **********************************/
-.aside-activites{
+.aside-activites {
     background-color: #78B281;
-    text-transform: uppercase;
     color: white;
     text-align: center;
     padding-top: 7%;
 }
 
-.aside-activites div{
+.aside-activites div {
     padding-top: 20%;
 }
 
-.aside-activites a{
+.aside-activites a {
     color: white;
-}
-
-.aside-activites .active{
-    color: #777777;
-    font-weight: bolder;
     font-style: oblique;
+    text-decoration: none;
 }
 
-.aside-activites-title{
+.aside-activites :hover {
+    font-style: inherit;
+    font-size: 1.1rem;
+}
+
+.aside-activites .active {
+    color: white;
+    font-weight: bolder;
+    text-decoration: underline;
+    font-style: inherit;
+}
+
+.aside-activites-title {
     font-size: 1.4rem;
     font-weight: bolder;
     color: black;
-    border: white 1px solid;
 }
 
 /********************************* PILATES *********************************/
-#pilates{
+#pilates {
     background-image: url("https://santephysique.fr/wp-content/uploads/2018/11/exercices-pilates-principale-1024x657.jpg");
     background-position-y: bottom;
 }
 
 /******************************** STRETCHING *******************************/
-#stretching{
+#stretching {
     background-image: url("https://www.eden-form.com/files/cours-stretching-bordeaux-2yGvzXy.jpg");
     background-position-y: center;
 }
 
-/***************************** MARCHE-NORDIQUE *****************************/
-#marche-nordique{
+/****************************** MARCHE-NORDIQUE ****************************/
+#marche-nordique {
     background-image: url("https://contents.mediadecathlon.com/p1280704/640x0/2562pt1920/5123xcr3840/thumbnail- comment-utiliser-bloqueurs-baton-marche-nordique.jpg?k=4dc57a2356983bf235754ea24d667b72");
     background-position-y: top;
 }
 
 /********************************** COURSE *********************************/
-#course{
+#course {
     background-image: url("https://cache.cosmopolitan.fr/data/photo/w1000_ci/55/course.jpg");
 }
 
 /********************************* FITNESS *********************************/
-#fitness{
+#fitness {
     background-image: url("http://www.love-fitness.fr/wp-content/uploads/2015/12/Fotolia_72752793_Subscription_Monthly_XXL1-1024x683.jpg");
     background-position-y: bottom;
 }
 
 /******************************* EVENEMENTIEL ******************************/
-#evenementiel{
+#evenementiel {
     background-image: url("https://www.photographe-professionnel-evenementiel.fr/wp-content/uploads/2015/12/Marathon-Nice-Cannes_081115-090507.jpg");
     background-position-y: center;
 }
@@ -248,3 +251,41 @@ footer{
 /***************************************************************************/
 /********************************* GALLERIE ********************************/
 /***************************************************************************/
+.galerie-block {
+
+}
+
+.galerie-photo-nom {
+
+}
+
+.galerie-photo-date {
+
+}
+
+.bouton-supprimer {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(210, 0, 0, 1);
+    background-image: linear-gradient(to top left,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2) 30%,
+        rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.bouton-supprimer:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.bouton-supprimer:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+                inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}

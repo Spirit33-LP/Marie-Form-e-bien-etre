@@ -6,16 +6,15 @@
     <main>
 
         <div id="accueil">
-            <h2>Page d'arriver sur le site</h2>
         </div>
 
         <div id="biographie">
             <h2>Biographie</h2>
             <div>
-                <div>
+                {#<div>
                     <img class="biographie-photo-profil" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQeBRQNgnaKYjW1EuTcMW2La1g
                     Y19kigTLUtPa1BRy_EIZ0CxphA&s" alt="photo portrait">
-                </div>
+                </div>#}
                 <div class="biographie-background-texte">
                     <p>
                         Diplômée d’Etat (Brevet Professionnel de la Jeunesse, de l'Éducation Populaire et du Sport Activités Physiques pour Tous
@@ -35,36 +34,14 @@
 
         <div id="activites">
             <h2>Activités</h2>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-4">
-                        <h3>pilates</h3>
-                        <img src="https://santephysique.fr/wp-content/uploads/2018/11/exercices-pilates-principale-1024x657.jpg" alt="photo Pilates">
+                <div class="activites-activites">
+                    {% for activite in activites %}
+                    <div>
+                        {{ activite.nom }}
+                        <a href="{{ path('activite_id', {'id' : activite.id}) }}">voir</a>
                     </div>
-                    <div class="col-4">
-                        <h3>stretching</h3>
-                        <img src="https://www.eden-form.com/files/cours-stretching-bordeaux-2yGvzXy.jpg" alt="photo Stretching">
-                    </div>
-                    <div class="col-4">
-                        <h3>marche nordique</h3>
-                        <img src="https://contents.mediadecathlon.com/p1280704/640x0/2562pt1920/5123xcr3840/thumbnail-comment-utiliser-bloqueurs-baton-marche-nordique.jpg?k=4dc57a2356983bf235754ea24d667b72" alt="photo Marche Nordique">
-                    </div>
+                    {% endfor %}
                 </div>
-                <div class="row">
-                    <div class="col-4">
-                        <h3>course à pied</h3>
-                        <img src="https://cache.cosmopolitan.fr/data/photo/w1000_ci/55/course.jpg" alt="photo Course à pied">
-                    </div>
-                    <div class="col-4">
-                        <h3>fitness</h3>
-                        <img src="http://www.love-fitness.fr/wp-content/uploads/2015/12/Fotolia_72752793_Subscription_Monthly_XXL1-1024x683.jpg" alt="photo Fitness">
-                    </div>
-                    <div class="col-4">
-                        <h3>evenementiel</h3>
-                        <img src="https://www.photographe-professionnel-evenementiel.fr/wp-content/uploads/2015/12/Marathon-Nice-Cannes_081115-090507.jpg" alt="photo Evenementiel">
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div id="tarifs-reglements">
@@ -196,4 +173,5 @@
         </div>
 
     </main>
+
 {% endblock %}

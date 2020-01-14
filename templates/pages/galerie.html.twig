@@ -3,7 +3,25 @@
 {% block title 'Galerie' %}
 
 {% block content %}
-    <main>
 
-    </main>
+    <div class="galerie-block container-fluid">
+
+        <div class="row">
+
+            {% for nom in galerie %}
+
+            <div class="galerie-photo-nom col-">{{ galerie.nom }}</div>
+
+            <div class="galerie-photo-date">le : {{ galerie.date }}</div>
+
+            <img src="{{ asset('assets/photos/~photo.img') }}" alt="{{ galerie.alt }}">
+
+            <input class="favorite bouton-supprimer" type="button" value="Supprimer">
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
 {% endblock %}

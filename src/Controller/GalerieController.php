@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Repository\GalerieRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class GalerieController extends AbstractController
@@ -30,6 +32,83 @@ class GalerieController extends AbstractController
 
         return $this->render('pages/galerie.html.twig', [
             'galerie' => $galerie,
+        ]);
+    }
+
+    /**
+     * @Route("/admin/galerie/supprimer/{id}", name="admin_galerie_supprimer_id")
+     */
+
+    public function supprimerPhoto(GalerieRepository $galerieRepository, EntityManagerInterface $entityManager, $id)
+    {
+        $photo = $galerieRepository->find($id);
+
+        $entityManager->remove($photo);
+
+        $entityManager->flush();
+
+        return $this->render('admin/galerie/PhotoSupprimer.html.twig', [
+            'photo' => $photo
+        ]);
+    }
+
+    /**
+     * @Route ("/admin/galerie/actualiser/{id}", name="admin_galerie_actualiser_id")
+     */
+
+    public function actualiserPhoto(GalerieRepository $galerieRepository, EntityManagerInterface $entityManager, Request $request, $id)
+    {
+        $photo = $galerieRepository->find($id);
+
+        $photoForm = $this->createForm(GalerieType::class, $photo);
+
+        $photoForm->handleRequest($request);
+
+        if ($photoForm->isSubmitted() && $photoForm->isValid())
+        {
+            $photo = $photoForm->getData();
+
+            $entityManager->persist($photo);
+
+            $entityManager->flush();
+
+            $this->addFlash('succès', "La photo a été actualiser");
+
+            return$this->redirectToRoute('galerie');
+        }
+
+        $photoFormView = $photoForm->createView();
+
+        return $this->render('admin/galerie/GalerieFormulaire.html.twig', [
+            'photoFormView' => $photoFormView
+        ]);
+    }
+
+    /**
+     * @Route ("/admin/galerie/inserer", name="admin_galerie_actualiser")
+     */
+
+    public function insererPhoto(Request $request, EntityManagerInterface $entityManager)
+    {
+        $photo = new photo();
+
+        $photoForm = $this->createForm(GalerieType::class, $photo);
+
+        if ($request->isMethod('POST'))
+        {
+            $photoForm->handleRequest($request);
+
+            if($photoForm->isValid())
+            {
+                $entityManager->persist($photo);
+                $entityManager->flush();
+            }
+        }
+
+        $photoFormView = $photoForm->createView();
+
+        return $this->render('admin/galerie/PhotoInserer.html.twig', [
+            'photoFormView' => $photoFormView
         ]);
     }
 }

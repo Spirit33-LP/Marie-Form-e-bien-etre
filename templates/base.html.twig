@@ -14,7 +14,7 @@
 <!-- ////////////////////////// LINK STYLE.CSS ////////////////////////// -->
 
         <link rel="stylesheet"
-              href="{{ asset('css/style.css') }}" />
+              href="{{ asset('assets/css/style.css') }}" />
 
 
         {#<link
@@ -51,7 +51,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('home')}}">Accueil</a>
+                            <a class="nav-link" href="{{ path('home')}}#">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('home')}}#biographie">Biographie</a>
@@ -70,7 +70,7 @@
                                 <a class="dropdown-item" href="{{ path('fitness')}}">Fitness</a>
                                 <a class="dropdown-item" href="{{ path('evenementiel')}}">Evenementiel</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ path('galerie')}}#activites">Galerie de photos</a>
+                                <a class="dropdown-item" href="{{ path('galerie')}}">Galerie de photos</a>
 
                             </div>
                         </li>
@@ -94,8 +94,6 @@
 
         {% block javascripts %}
         {% endblock %}
-
-    <footer></footer>
 
 <!-- ///////////////////////// LINK JS / JQUERRY //////////////////////// -->
 
