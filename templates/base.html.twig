@@ -2,10 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="">
+        <meta name="author" content="Cyril CHAMPROU">
+        <meta name="descrition" content="Mon site parle de sport, bien-être, pilates, stretching, marche nordique, course à pied, fitness, evenemetiel, remise en forme">
+        <meta name="keywords" content="html, css, bootstrap, balises, tags">
+        <meta name="robots" content="all, follow">
 {#        <title>{% block title %}{% endblock %}</title>#}
-        
+
 <!-- ////////////////////////// LINK BOOTSTRAP ////////////////////////// -->
-        
+
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -43,15 +48,15 @@
 
         <header>
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="{{ path('home')}}">Marie Form&e et bien être</a>
+            <nav class="navbar-expand-lg navbar-light navbar">
+                <a class="navbar-brand" href="{{ path('home')}}#accueil"><img src="../public/assets/img/logo_simple.png" alt="logo"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
+                <div class="collapse navbar-collapse navbar-background-texte" id="navbarNavDropdown">
+                    <ul class="navbar-nav navbar-texte">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('home')}}#">Accueil</a>
+                            <a class="nav-link" href="{{ path('home')}}#accueil">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('home')}}#biographie">Biographie</a>
@@ -63,12 +68,12 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="{{ path('home')}}#activites">Les activités</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ path('pilates')}}">Pilates</a>
+{#                                <a class="dropdown-item" href="{{ path('pilates')}}">Pilates</a>
                                 <a class="dropdown-item" href="{{ path('stretching')}}">Stretching</a>
                                 <a class="dropdown-item" href="{{ path('marche_nordique')}}">Marche Nordique</a>
-                                <a class="dropdown-item" href="{{ path('course')}}">Course à pied</a>
+                                <a class="dropdown-item" href="{{ path('course_a_pied')}}">Course à pied</a>
                                 <a class="dropdown-item" href="{{ path('fitness')}}">Fitness</a>
-                                <a class="dropdown-item" href="{{ path('evenementiel')}}">Evenementiel</a>
+                                <a class="dropdown-item" href="{{ path('evenementiel')}}">Evenementiel</a>            #}
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ path('galerie')}}">Galerie de photos</a>
 
@@ -97,9 +102,9 @@
 
 <!-- ///////////////////////// LINK JS / JQUERRY //////////////////////// -->
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
 </html>
 

@@ -11,11 +11,7 @@
         <div id="biographie">
             <h2>Biographie</h2>
             <div>
-                {#<div>
-                    <img class="biographie-photo-profil" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQeBRQNgnaKYjW1EuTcMW2La1g
-                    Y19kigTLUtPa1BRy_EIZ0CxphA&s" alt="photo portrait">
-                </div>#}
-                <div class="biographie-background-texte">
+                <div class="biographie-texte">
                     <p>
                         Diplômée d’Etat (Brevet Professionnel de la Jeunesse, de l'Éducation Populaire et du Sport Activités Physiques pour Tous
                         - N° Pro : 03319ED0466), titulaire du Matwork 1 Instructeur Pilates, également Entraineur Fédéral Hors Stade 1er degré
@@ -34,33 +30,26 @@
 
         <div id="activites">
             <h2>Activités</h2>
-                <div class="activites-activites">
-                    {% for activite in activites %}
-                    <div>
-                        {{ activite.nom }}
-                        <a href="{{ path('activite_id', {'id' : activite.id}) }}">voir</a>
-                    </div>
-                    {% endfor %}
+
+            {% if is_granted("ROLE_ADMIN") %}
+                <div class="home-activites-boutons-crud">
+                    <div class="home-activites-bouton-ajouter"><a href="{{ path('admin_activite_ajouter') }}"><span>ajouter une activité</span></a></div>
                 </div>
+            {% endif %}
+
+            <div class="activites-activites">
+                {% for activite in activites %}
+                    <div class="activites-alignement">
+                        <div>{{ activite.nom }}</div>
+                        <div class="activites-bouton-info"><a href="{{ path('activite_id', {'id' : activite.id}) }}">En savoir plus</a></div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
         <div id="tarifs-reglements">
             <h2>Tarifs et réglements</h2>
-            <div class="container-fluid tarifs-reglements-tableau">
-                <div class="row">
-                    <div class="col-3">
-                        texte-1
-                    </div>
-                    <div class="col-3">
-                        texte-2
-                    </div>
-                    <div class="col-3">
-                        texte-3
-                    </div>
-                    <div class="col-3">
-                        texte-4
-                    </div>
-                </div>
+            <div class="container-fluid tarifs-reglements-grille">
                 <div class="row">
                     <div class="col-3">
                         texte-1
@@ -139,8 +128,8 @@
             <div class="agenda-reservation-block">
                 <div class="agenda-reservation-agenda">
                     <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FParis&amp;src=Y3lyaWwuY2hhbXByb3VAbGFwaXNjaW5lLnBybw&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZnIuZnJlbmNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=bGFwaXNjaW5lLnByb19sNGhxdDAyc2pzMWQ1NTYxbDd2Nm10MHE4Z0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;src=Ym9uam91ckBsYXBpc2NpbmUucHJv&amp;src=bGFwaXNjaW5lLnByb19nMHJncDB1MTI3MTl1Nm5uM29taDA1cW41MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%2322AA99&amp;color=%23329262&amp;color=%231F753C&amp;color=%23B08B59&amp;color=%239F3501&amp;color=%233366CC"
-                    style="border:solid 1px #777" width="600" height="500"
-                    frameborder="0" scrolling="no"></iframe>
+                            style="border:solid 1px #777" width="600" height="500"
+                            frameborder="0" scrolling="no"></iframe>
                 </div>
                 <div class="agenda-reservation-reservation">
                     <p>Nom</p>
@@ -149,6 +138,7 @@
                     <p>Mail</p>
                     <p>Activité</p>
                     <p>Horaire</p>
+                    <a href="mailto:cyril.champrou@lapiscine.pro">Me contacter par mail</a>
                 </div>
             </div>
         </div>
@@ -164,7 +154,7 @@
                 <div class="contact-carte">
                     <div class="contact-carte-google">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d29376.171355460137!2d-0.5644988451315!3d44.777978491776565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1577639738322!5m2!1sfr!2sfr"
-                        width="500" height="500" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                                width="500" height="500" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                     </div>
                     <div class="contact-zone">
                     </div>

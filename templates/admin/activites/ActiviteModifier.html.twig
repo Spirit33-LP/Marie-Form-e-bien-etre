@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}modification{% endblock titre %}
+
+{% block content %}
+
+    <div class="container mt-4">
+
+        <h1>modifier l'activité</h1>
+
+        {{ form_start(activiteFormView) }}
+        {{ form_widget(activiteFormView) }}
+        {{ form_end(activiteFormView) }}
+
+    </div>
+
+{% endblock content %}

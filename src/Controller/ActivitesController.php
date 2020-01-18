@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Activites;
 use App\Form\ActiviteType;
 use App\Repository\ActivitesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ActivitesController extends AbstractController
@@ -24,78 +26,75 @@ class ActivitesController extends AbstractController
     }
 
     /**
+     * @Route("/activite/{id}", name="activite_id")
+     */
+
+    public function ActiviteAffiche(ActivitesRepository $activitesRepository, $id)
+    {
+        $activite = $activitesRepository->find($id);
+
+        return $this->render('activites/activite_id.html.twig', ['activite' => $activite]);
+    }
+
+    /*
      * @Route("/activite/pilates", name="pilates")
      */
-    public function pilates()
+    /* public function pilates()
     {
         return $this->render('activites/pilates.html.twig', [
             'controller_name' => 'ActivitesController',
             'current_menu' => 'pilates'
         ]);
-    }
+    } */
 
     /**
-     * @Route("/activite/stretching", name="stretching")
+     * @Route("/admin/activite/ajouter", name="admin_activite_ajouter")
      */
-    public function stretching()
-    {
-        return $this->render('activites/stretching.html.twig', [
-            'controller_name' => 'ActivitesController',
-            'current_menu' => 'stretching'
-        ]);
-    }
 
-    /**
-     * @Route("/activite/marche_nordique", name="marche_nordique")
-     */
-    public function marche_nordique()
+    public function ActiviteInserer(Request $request, EntityManagerInterface $entityManager)
     {
-        return $this->render('activites/marche_nordique.html.twig', [
-            'controller_name' => 'ActivitesController',
-            'current_menu' => 'marche_nordique'
-        ]);
-    }
+        // Je créé une nouvelle activité à associer à mon formulaire pour que mon formulaire l'enregistre en BDD
+        $activite = new Activites();
 
-    /**
-     * @Route("/activite/course", name="course")
-     */
-    public function course()
-    {
-        return $this->render('activites/course.html.twig', [
-            'controller_name' => 'ActivitesController',
-            'current_menu' => 'course'
-        ]);
-    }
+        // Je viens récupérer mon gabarit de formulaire et je l'associe à une nouvelle activité
+        $activiteForm = $this->createForm(ActiviteType::class, $activite);
 
-    /**
-     * @Route("/activite/fitness", name="fitness")
-     */
-    public function fitness()
-    {
-        return $this->render('activites/fitness.html.twig', [
-            'controller_name' => 'ActivitesController',
-            'current_menu' => 'fitness'
-        ]);
-    }
+        // (1) : Je vérifie si le formulaire a été envoyé (donc si la requête est un POST)
+        if ($request->isMethod('POST'))
+        {
+            // (2) : Je demande à la variable contenant le formulaire de récupérer les données de la requête envoyé
+            // (donc les données envoyés en POST)
+            $activiteForm->handleRequest($request);
 
-    /**
-     * @Route("/activite/evenementiel", name="evenementiel")
-     */
-    public function evenementiel()
-    {
-        return $this->render('activites/evenementiel.html.twig', [
-            'controller_name' => 'ActivitesController',
-            'current_menu' => 'evenementiel'
+            // (3) : Je vérifie que les données de formulaire sont valides par rapport à ce que j'attends
+            if ($activiteForm->isValid())
+            {
+                // (4) : J'enregistre mon activité en BDD (avec le percist qui stock les informations et le flush qui envoie dans la BDD)
+                $entityManager->persist($activite);
+                $entityManager->flush();
+
+                // Une fois envoyé en BDD, je retourne sur la page d'acceuil sans manipulation
+                return $this->redirectToRoute('home');
+
+            }
+        }
+
+        // Je créé un formulaire utilisable dans mon twig avec le formulaire
+        $activiteFormView = $activiteForm->createView();
+
+        // 3 : rendre un fichier Twig, en lui passant la variable qui contient la vue du formulaire
+        return $this->render('admin/activites/ActiviteAjouter.html.twig', [
+            'activiteFormView' => $activiteFormView
         ]);
     }
 
     /**
      * @param ActivitesRepository $activitesRepository
      * @param EntityManagerInterface $entityManager
-     * @Route("/admin/activites/supprimer/{id}", name="admin_activites_supprimer_id")
+     * @Route("/admin/activite/supprimer/{id}", name="admin_activite_supprimer_id")
      */
 
-    public function supprimerActivite(ActivitesRepository $activitesRepository, EntityManagerInterface $entityManager, $id)
+    public function ActiviteSupprimer(ActivitesRepository $activitesRepository, EntityManagerInterface $entityManager, $id)
     {
         $activite = $activitesRepository->find($id);
 
@@ -114,10 +113,10 @@ class ActivitesController extends AbstractController
      * @param EntityManagerInterface $entityManager
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     * @Route("/admin/activites/actualiser/{id}", name="admin_activites_actualiser_id")
+     * @Route("/admin/activite/modifier/{id}", name="admin_activite_modifier_id")
      */
 
-    public function actualiserActivite(ActivitesRepository $activitesRepository, EntityManagerInterface $entityManager, Request $request, $id)
+    public function ActiviteModifier(ActivitesRepository $activitesRepository, EntityManagerInterface $entityManager, Request $request, $id)
     {
         $activite = $activitesRepository->find($id);
 
@@ -133,63 +132,17 @@ class ActivitesController extends AbstractController
 
             $entityManager->flush();
 
-            $this->addFlash('succès', "L'activité a bien été actualiser");
+            $this->addFlash('succès', "L'activité a bien été modifier");
 
             return $this->redirectToRoute('home');
         }
 
         $activiteFormView = $activiteForm->createView();
 
-        return $this->render('admin/activites/ActiviteFormulaire.html.twig', [
+        return $this->render('admin/activites/ActiviteModifier.html.twig', [
             'activiteFormView' => $activiteFormView
         ]);
     }
 
-    /**
-     * @Route("/admin/activites/inserer", name="admin_activites_actualiser")
-     */
 
-    public function insererActivite(Request $request, EntityManagerInterface $entityManager, $activiteForm)
-    {
-        // Je créé une nouvelle activité à associer à mon formulaire pour que mon formulaire l'enregistre en BDD
-        $activite = new Activite();
-
-        // Je viens récupérer mon gabarit de formulaire et je l'associe à une nouvelle activité
-        $activiteForm = $this->createForm(ActiviteType::class, $activite);
-
-        // (1) : On vérifie si le formulaire a été envoyé (donc si la requête est un POST)
-        if ($request->isMethod('POST'))
-        {
-            // (2) : On demande à la variable contenant le formulaire de récupérer les données de la requête envoyé
-            // (donc les données envoyés en POST)
-            $activiteForm->handleRequest($request);
-
-            // (3) : On vérifie que les données de formulaire sont valides par rapport à ce qu'on attend
-            if ($activiteForm->isValid())
-            {
-                // (4) : On enregistre notre produit en BDD (avec le percist et le flush)
-                $entityManager->persist($activite);
-                $entityManager->flush();
-            }
-        }
-
-        // Je créé un formulaire utilisable dans mon twig avec le formulaire
-        $activiteFormView = $activiteForm->createView();
-
-        // 3 : rendre un fichier Twig, en lui passant la variable qui contient la vue du formulaire
-        return $this->render('admin/activites/ActiviteInserer.html.twig', [
-            'activiteFormView' => $activiteFormView
-        ]);
-    }
-
-    /**
-     * @Route("/activite/{id}", name="activite_id")
-     */
-
-    public function afficheActivite(ActivitesRepository $activitesRepository, $id)
-    {
-        $activite = $activitesRepository->find($id);
-
-        return $this->render('activites/activite_id.html.twig', ['activite' => $activite]);
-    }
 }

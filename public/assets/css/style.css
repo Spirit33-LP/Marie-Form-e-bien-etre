@@ -29,11 +29,79 @@ h2 {
     font-size: 4rem;
 }
 
+/******************************* BOUTON CRUD *******************************/
+.home-activites-boutons-crud {
+    display: flex;
+}
+
+.activite-boutons-crud {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-activites-bouton-ajouter a, .activite-bouton-supprimer a, .activite-bouton-actualiser a {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: dodgerblue;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 1rem;
+    padding: 7px;
+    width: 125px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.activite-bouton-supprimer a {
+    background-color: red;
+}
+
+.home-activites-bouton-ajouter a {
+    background-color: forestgreen;
+    width: 250px;
+}
+
+.home-activites-bouton-ajouter span, .activite-bouton-supprimer span, .activite-bouton-actualiser span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.home-activites-bouton-ajouter span:after, .activite-bouton-supprimer span:after, .activite-bouton-actualiser span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.home-activites-bouton-ajouter:hover span, .activite-bouton-supprimer:hover span, .activite-bouton-actualiser:hover span{
+    padding-right: 25px;
+}
+
+.home-activites-bouton-ajouter:hover span:after, .activite-bouton-supprimer:hover span:after, .activite-bouton-actualiser:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
 /***************************************************************************/
 /****************************** HEADER NAVBAR ******************************/
 /***************************************************************************/
-.navbar a:hover {
-    color: #78B281;
+.navbar {
+    position: static;
+    display: block;
+    text-align: center;
+    background-color: #AFCCB1;
+}
+
+.navbar-background-texte {
+    background-color: rgba(255, 210, 142, 0.7);
+    justify-content: space-around;
+    font-size: 1.2rem;
 }
 
 /***************************************************************************/
@@ -53,11 +121,11 @@ h2 {
     height: 100vh;
     text-align: center;
     background-color: #78B281;
-    border: dashed 1px black;
+    border: dashed 1px white;
 }
 
 #accueil h2, #biographie h2, #activites h2, #tarifs-reglements h2, #agenda-reservation h2, #contact h2 {
-    padding: 10px 0px;
+    padding: 10px 0;
 }
 
 /******************************** ACCUEIL **********************************/
@@ -67,15 +135,7 @@ h2 {
 }
 
 /******************************* BIOGRAPHIE ********************************/
-/*.biographie-photo-profil {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-}*/
-
-.biographie-background-texte {
+.biographie-texte {
     background: rgba(130, 255, 128,0.5);
     padding: 80px;
     margin: 170px 150px;
@@ -85,6 +145,14 @@ h2 {
 }
 
 /******************************** ACTIVITES ********************************/
+.activites-activites {
+    font-size: 2rem;
+}
+
+.activites-bouton-info {
+    font-size: 1rem;
+}
+
 /*#activites img {
     width: 100%;
     height: 280px;
@@ -98,8 +166,8 @@ h2 {
 }*/
 
 /*************************** TARIFS/REGLEMENTS *****************************/
-.tarifs-reglements-tableau {
-    border: yellow dashed 1px;
+.tarifs-reglements-grille {
+    border: dotted 1px red;
 }
 
 .tarifs-reglements-background-texte {
@@ -162,7 +230,7 @@ h2 {
 /***************************************************************************/
 /******************************** ACTIVITES ********************************/
 /***************************************************************************/
-#activite-page, #pilates, #stretching, #marche-nordique, #course, #fitness, #evenementiel {
+#activite-page, #pilates, #stretching, #marche-nordique, #course-a-pied, #fitness, #evenementiel {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -170,11 +238,10 @@ h2 {
 }
 
 .activite-texte {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 130px 150px 0px 300px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 130px 150px 0 300px;
     text-align: justify;
     color: white;
-
 }
 
 /********************************** ASIDE **********************************/
@@ -197,7 +264,7 @@ h2 {
 
 .aside-activites :hover {
     font-style: inherit;
-    font-size: 1.1rem;
+    /*font-size: 1.1rem;*/
 }
 
 .aside-activites .active {
@@ -205,6 +272,7 @@ h2 {
     font-weight: bolder;
     text-decoration: underline;
     font-style: inherit;
+    font-size: 1.1rem;
 }
 
 .aside-activites-title {
@@ -215,37 +283,32 @@ h2 {
 
 /********************************* PILATES *********************************/
 #pilates {
-    background-image: url("https://santephysique.fr/wp-content/uploads/2018/11/exercices-pilates-principale-1024x657.jpg");
-    background-position-y: bottom;
+
 }
 
 /******************************** STRETCHING *******************************/
 #stretching {
-    background-image: url("https://www.eden-form.com/files/cours-stretching-bordeaux-2yGvzXy.jpg");
-    background-position-y: center;
+
 }
 
 /****************************** MARCHE-NORDIQUE ****************************/
 #marche-nordique {
-    background-image: url("https://contents.mediadecathlon.com/p1280704/640x0/2562pt1920/5123xcr3840/thumbnail- comment-utiliser-bloqueurs-baton-marche-nordique.jpg?k=4dc57a2356983bf235754ea24d667b72");
-    background-position-y: top;
+
 }
 
-/********************************** COURSE *********************************/
-#course {
-    background-image: url("https://cache.cosmopolitan.fr/data/photo/w1000_ci/55/course.jpg");
+/****************************** COURSE-A-PIED *******************************/
+#course-a-pied {
+
 }
 
 /********************************* FITNESS *********************************/
 #fitness {
-    background-image: url("http://www.love-fitness.fr/wp-content/uploads/2015/12/Fotolia_72752793_Subscription_Monthly_XXL1-1024x683.jpg");
-    background-position-y: bottom;
+
 }
 
 /******************************* EVENEMENTIEL ******************************/
 #evenementiel {
-    background-image: url("https://www.photographe-professionnel-evenementiel.fr/wp-content/uploads/2015/12/Marathon-Nice-Cannes_081115-090507.jpg");
-    background-position-y: center;
+
 }
 
 /***************************************************************************/
@@ -288,4 +351,11 @@ h2 {
 .bouton-supprimer:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
                 inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+/***************************************************************************/
+/********************************** LOGIN **********************************/
+/***************************************************************************/
+.login-username {
+
 }
