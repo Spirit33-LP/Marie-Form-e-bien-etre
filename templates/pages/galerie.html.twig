@@ -1,27 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Galerie' %}
+{% block title %}Galerie{% endblock title %}
 
 {% block content %}
 
-    <div class="galerie-block container-fluid">
+    <div class="container col-4">
+
+        <img src="{{ 'assets/img/erreur_404.jpg'}}" alt="page en construction">
+
+    </div>
+
+{#    <div class="galerie-block container-fluid">
 
         <div class="row">
 
             {% for nom in galerie %}
 
-            <div class="galerie-photo-nom col-">{{ galerie.nom }}</div>
+            <div class="galerie-photo-nom">{{ galerie.nom }}</div>
 
-            <div class="galerie-photo-date">le : {{ galerie.date }}</div>
+            <div class="galerie-photo-date">le : {{ galerie.date|date("d/m/Y") }}</div>
 
-            <img src="{{ asset('assets/photos/~photo.img') }}" alt="{{ galerie.alt }}">
+            <img alt="{{ galerie.alt }}" src="{{ asset('assets/photos/' ~ photo.jpg) }}">
 
-            <input class="favorite bouton-supprimer" type="button" value="Supprimer">
+            <a class="activite-bouton-retour" href="{{ path('home') }}">Retour à l'accueil</a>
+
+                {% if is_granted("ROLE_ADMIN") %}
+                    <div class="activite-boutons-crud">
+                        <div class="activite-bouton-actualiser"><a href="{{ path('admin_photo_modifier_id', {'id' : galerie.id}) }}"><span>Modifier</span></a></div>
+                        <div class="galerie-bouton-supprimer"><a href="{{ path('admin_photo_supprimer_id', {'id' : galerie.id}) }}"><span>Supprimer</span></a></div>
+                    </div>
+                {% endif %}
+
+#}{#            <input class="favorite bouton-supprimer" type="button" value="Supprimer">#}{#
 
             {% endfor %}
 
         </div>
 
-    </div>
+    </div>#}
 
 {% endblock %}

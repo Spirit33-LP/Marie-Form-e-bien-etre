@@ -5,11 +5,13 @@
 {% block content %}
     <main>
 
+{#        /******************************** ACCUEIL **********************************/#}
         <div id="accueil">
         </div>
 
+{#        /******************************* BIOGRAPHIE ********************************/#}
         <div id="biographie">
-            <h2>Biographie</h2>
+            <h1>Biographie</h1>
             <div>
                 <div class="biographie-texte">
                     <p>
@@ -19,112 +21,54 @@
                         dans le respect du corps et de l'esprit. Le "Bien-Être" en leitmotiv.
                     </p>
                     <p>
-                        « J’ai commencé par la course à pied, et chemin faisant j’ai du faire face à des périodes ou physiquement et mentalement
+                        <span>« J’ai commencé par la course à pied, et chemin faisant j’ai du faire face à des périodes ou physiquement et mentalement
                         je faisais face à des fragilités incontestables. J’ai alors découvert le Pilates et le Stretching. Mais hormis la pratique
                         d’une activité physique, c’est également à travers des démarches de stimulation de l’esprit que j’apprends chaque jour à me
                         connaître moi-même. »
+                        </span>
                     </p>
                 </div>
             </div>
         </div>
 
+{#        /******************************** ACTIVITES ********************************/#}
         <div id="activites">
-            <h2>Activités</h2>
-
+            <h1>Activités</h1>
+            <div class="activites-activites">
+                {% for activite in activites %}
+                        <div class="activites-show container col-4">
+                            <div>{{ activite.nom }}</div>
+                            <div class="activites-bouton-decouvrir"><a href="{{ path('activite_id', {'id' : activite.id}) }}">découvrir</a></div>
+                        </div>
+                {% endfor %}
+            </div>
             {% if is_granted("ROLE_ADMIN") %}
                 <div class="home-activites-boutons-crud">
                     <div class="home-activites-bouton-ajouter"><a href="{{ path('admin_activite_ajouter') }}"><span>ajouter une activité</span></a></div>
                 </div>
             {% endif %}
-
-            <div class="activites-activites">
-                {% for activite in activites %}
-                    <div class="activites-alignement">
-                        <div>{{ activite.nom }}</div>
-                        <div class="activites-bouton-info"><a href="{{ path('activite_id', {'id' : activite.id}) }}">En savoir plus</a></div>
-                    </div>
-                {% endfor %}
-            </div>
         </div>
 
+{#        /*************************** TARIFS/REGLEMENTS *****************************/#}
         <div id="tarifs-reglements">
-            <h2>Tarifs et réglements</h2>
-            <div class="container-fluid tarifs-reglements-grille">
-                <div class="row">
-                    <div class="col-3">
-                        texte-1
-                    </div>
-                    <div class="col-3">
-                        texte-2
-                    </div>
-                    <div class="col-3">
-                        texte-3
-                    </div>
-                    <div class="col-3">
-                        texte-4
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3">
-                        texte-1
-                    </div>
-                    <div class="col-3">
-                        texte-2
-                    </div>
-                    <div class="col-3">
-                        texte-3
-                    </div>
-                    <div class="col-3">
-                        texte-4
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3">
-                        texte-1
-                    </div>
-                    <div class="col-3">
-                        texte-2
-                    </div>
-                    <div class="col-3">
-                        texte-3
-                    </div>
-                    <div class="col-3">
-                        texte-4
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3">
-                        texte-1
-                    </div>
-                    <div class="col-3">
-                        texte-2
-                    </div>
-                    <div class="col-3">
-                        texte-3
-                    </div>
-                    <div class="col-3">
-                        texte-4
-                    </div>
-                </div>
-            </div>
+            <h1>Tarifs et réglements</h1>
+            <div class="container tarifs-reglements-grille"></div>
             <div class="tarifs-reglements-background-texte">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae porro dignissimos magnam aut sit eligendi amet saepe repellendus sint?
-                    Rem perspiciatis, et corrupti necessitatibus deleniti obcaecati quia rerum amet reiciendis.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae porro dignissimos magnam aut sit eligendi amet saepe repellendus sint?
-                    Rem perspiciatis, et corrupti necessitatibus deleniti obcaecati quia rerum amet reiciendis.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae porro dignissimos magnam aut sit eligendi amet saepe repellendus sint?
-                    Rem perspiciatis, et corrupti necessitatibus deleniti obcaecati quia rerum amet reiciendis.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae porro dignissimos magnam aut sit eligendi amet saepe repellendus sint?
-                    Rem perspiciatis, et corrupti necessitatibus deleniti obcaecati quia rerum amet reiciendis.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae porro dignissimos magnam aut sit eligendi amet saepe repellendus sint?
-                    Rem perspiciatis, et corrupti necessitatibus deleniti obcaecati quia rerum amet reiciendis.
+                    On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions,
+                    et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme
+                    'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas
+                    comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web
+                    ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux
+                    sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par
+                    accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).
                 </p>
             </div>
         </div>
 
+{#        /************************** AGENDA/RESERVATIONS ****************************/#}
         <div id="agenda-reservation">
-            <h2>Agenda et reservation</h2>
+            <h1>Agenda et reservation</h1>
             <div class="agenda-reservation-block">
                 <div class="agenda-reservation-agenda">
                     <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FParis&amp;src=Y3lyaWwuY2hhbXByb3VAbGFwaXNjaW5lLnBybw&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZnIuZnJlbmNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=bGFwaXNjaW5lLnByb19sNGhxdDAyc2pzMWQ1NTYxbDd2Nm10MHE4Z0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;src=Ym9uam91ckBsYXBpc2NpbmUucHJv&amp;src=bGFwaXNjaW5lLnByb19nMHJncDB1MTI3MTl1Nm5uM29taDA1cW41MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%2322AA99&amp;color=%23329262&amp;color=%231F753C&amp;color=%23B08B59&amp;color=%239F3501&amp;color=%233366CC"
@@ -143,8 +87,9 @@
             </div>
         </div>
 
+{#        /********************************* CONTACT *********************************/#}
         <div id="contact">
-            <h2>Contact</h2>
+            <h1>Contact</h1>
             <div class="contact-block">
                 <div class="contact-info">
                     <p>Prénom</p>

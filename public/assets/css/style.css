@@ -25,13 +25,9 @@ body {
     font-family: Kiona-Regular;
 }
 
-h2 {
-    font-size: 4rem;
-}
-
 /******************************* BOUTON CRUD *******************************/
 .home-activites-boutons-crud {
-    display: flex;
+    margin-top: 200px;
 }
 
 .activite-boutons-crud {
@@ -41,7 +37,7 @@ h2 {
 
 .home-activites-bouton-ajouter a, .activite-bouton-supprimer a, .activite-bouton-actualiser a {
     display: inline-block;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: dodgerblue;
     border: none;
     color: #FFFFFF;
@@ -100,18 +96,14 @@ h2 {
 
 .navbar-background-texte {
     background-color: rgba(255, 210, 142, 0.7);
-    justify-content: space-around;
     font-size: 1.2rem;
+    justify-content: center;
 }
 
 /***************************************************************************/
 /********************************* FOOTER **********************************/
 /***************************************************************************/
-/*footer {
-    width: 100%;
-    height: 150px;
-    background-color: #B0413E;
-}*/
+
 
 /***************************************************************************/
 /******************************** HOMEPAGE *********************************/
@@ -120,59 +112,74 @@ h2 {
     width: 100%;
     height: 100vh;
     text-align: center;
-    background-color: #78B281;
-    border: dashed 1px white;
+    background: rgb(120,178,129);
+    background: linear-gradient(180deg,
+                rgba(120,178,129,1) 0%,
+                rgba(120,178,129,1) 85%,
+                rgba(255,255,255,1) 100%);
 }
 
-#accueil h2, #biographie h2, #activites h2, #tarifs-reglements h2, #agenda-reservation h2, #contact h2 {
+#accueil h1, #biographie h1, #activites h1, #tarifs-reglements h1, #agenda-reservation h1, #contact h1 {
+    font-size: 4.5rem;
+    color: bisque;
     padding: 10px 0;
 }
 
 /******************************** ACCUEIL **********************************/
 #accueil {
-    background-size: cover;
     background-image: url("https://cache.marieclaire.fr/data/photo/w1000_ci/4w/livre-pilates-mollie-stansbury.jpg");
+    background-size: cover;
 }
 
 /******************************* BIOGRAPHIE ********************************/
 .biographie-texte {
     background: rgba(130, 255, 128,0.5);
     padding: 80px;
-    margin: 170px 150px;
+    margin: 120px 150px;
     text-align: justify;
     border-radius: 60px;
     color: white;
 }
 
+.biographie-texte span {
+    font-family: Kiona-Itallic;
+}
+
 /******************************** ACTIVITES ********************************/
 .activites-activites {
     font-size: 2rem;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.activites-bouton-info {
-    font-size: 1rem;
+.activites-show:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
 }
 
-/*#activites img {
-    width: 100%;
-    height: 280px;
-    opacity: 0.4;
-    transition-duration: 0.6s;
+.activites-bouton-decouvrir a {
+    font-size: 0.8rem;
+    color: white;
+    background-color: rgba(121, 255, 83, 0.4);
+    text-decoration: none;
+    border-radius: 20px;
+    padding: 8px 32px;
+    text-align: center;
+    display: inline-block;
+    margin: 8px 2px;
 }
-
-#activites img:hover {
-    opacity: 1;
-    transition-delay: 0.15s;
-}*/
 
 /*************************** TARIFS/REGLEMENTS *****************************/
 .tarifs-reglements-grille {
-    border: dotted 1px red;
+    background-image: url("../img/grille_tarifs.jpg");
+    background-size: cover;
+    width: 700px;
+    height: 300px;
 }
 
 .tarifs-reglements-background-texte {
     background: rgba(130, 255, 128,0.5);
-    padding: 100px 70px 70px;
+    padding: 40px;
     margin: 20px 150px;
     text-align: justify;
     color: white;
@@ -237,11 +244,56 @@ h2 {
     background-size: cover;
 }
 
+h2 {
+    font-size: 4rem;
+    padding-bottom: 50px;
+}
+
 .activite-texte {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 130px 150px 0 300px;
     text-align: justify;
     color: white;
+}
+
+.activite-bouton-retour a {
+    display: inline-block;
+    border-radius: 8px;
+    background-color: rgb(200, 200, 200);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 1rem;
+    padding: 7px;
+    width: 290px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-bottom: 100px;
+}
+
+.activite-bouton-retour span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.activite-bouton-retour span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.activite-bouton-retour:hover span {
+    padding-right: 25px;
+}
+
+.activite-bouton-retour:hover span:after {
+    opacity: 1;
+    right: 0;
 }
 
 /********************************** ASIDE **********************************/
@@ -326,7 +378,7 @@ h2 {
 
 }
 
-.bouton-supprimer {
+.galerie-bouton-supprimer {
     border: 0;
     line-height: 2.5;
     padding: 0 20px;
@@ -344,11 +396,11 @@ h2 {
                 inset -2px -2px 3px rgba(0, 0, 0, 0.6);
 }
 
-.bouton-supprimer:hover {
+.galerie-bouton-supprimer:hover {
     background-color: rgba(255, 0, 0, 1);
 }
 
-.bouton-supprimer:active {
+.galerie-bouton-supprimer:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
                 inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
@@ -359,3 +411,7 @@ h2 {
 .login-username {
 
 }
+
+/***************************************************************************/
+/*********************************** 404 ***********************************/
+/***************************************************************************/

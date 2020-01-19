@@ -21,42 +21,20 @@
         <link rel="stylesheet"
               href="{{ asset('assets/css/style.css') }}" />
 
-
-        {#<link
-                rel="stylesheet"
-                media="screen and (max-width: 1280px)"
-                href="../public/css/style.css"
-        />
-        <link
-                rel="stylesheet"
-                media="screen and (max-width: 1279px)"
-                href="../public/css/style.css"
-        />
-        <link
-                rel="stylesheet"
-                media="screen and (max-width: 768px)"
-                href="../public/css/style.css"
-        />
-        <link
-                rel="stylesheet"
-                media="screen and (max-width: 480px)"
-                href="../public/css/style.css"
-        />#}
-
         {% block stylesheets %}{% endblock %}
     </head>
 
         <header>
 
             <nav class="navbar-expand-lg navbar-light navbar">
-                <a class="navbar-brand" href="{{ path('home')}}#accueil"><img src="../public/assets/img/logo_simple.png" alt="logo"></a>
+                <a class="navbar-brand" href="{{ path('home')}}#"><img src="{{ asset('assets/img/logo_simple.png')}}" alt="logo"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse navbar-background-texte" id="navbarNavDropdown">
                     <ul class="navbar-nav navbar-texte">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('home')}}#accueil">Accueil</a>
+                            <a class="nav-link" href="{{ path('home')}}#">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('home')}}#biographie">Biographie</a>
@@ -68,14 +46,13 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="{{ path('home')}}#activites">Les activités</a>
                                 <div class="dropdown-divider"></div>
-{#                                <a class="dropdown-item" href="{{ path('pilates')}}">Pilates</a>
-                                <a class="dropdown-item" href="{{ path('stretching')}}">Stretching</a>
-                                <a class="dropdown-item" href="{{ path('marche_nordique')}}">Marche Nordique</a>
-                                <a class="dropdown-item" href="{{ path('course_a_pied')}}">Course à pied</a>
-                                <a class="dropdown-item" href="{{ path('fitness')}}">Fitness</a>
-                                <a class="dropdown-item" href="{{ path('evenementiel')}}">Evenementiel</a>            #}
+                                <a class="dropdown-item" href="#activites">pilates</a>
+                                <a class="dropdown-item" href="#activites">stretching</a>
+                                <a class="dropdown-item" href="#activites">marche nordique</a>
+                                <a class="dropdown-item" href="#activites">course à pied</a>
+                                <a class="dropdown-item" href="#activites">fitness</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ path('galerie')}}">Galerie de photos</a>
+                                <a class="dropdown-item" href="{{ path('galerie')}}">Galerie</a>
 
                             </div>
                         </li>
@@ -87,6 +64,19 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('home')}}#contact">Contact</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="{{ path ('fos_user_security_login') }}">se connecter</a>
+                        </li>
+                        <li class="nav-link">
+                            {% if is_granted("ROLE_ADMIN") %}
+                                <a href="{{ path ('fos_user_security_login') }}">se deconnecter</a>
+                            {% endif %}
+                        </li>
+                        <li class="nav-link">
+                            {% if is_granted("ROLE_ADMIN") %}
+                                <p>bonjour marie</p>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>

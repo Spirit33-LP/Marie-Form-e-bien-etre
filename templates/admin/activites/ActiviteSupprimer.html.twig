@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block titre %}Page suppression de l'activité {{ activite.nom }} {% endblock titre %}
+
+{% block content %}
+
+    <p>L'activité {{ activite.nom }} a bien été supprimer</p>
+    <a href="{{ path ('home') }}">Revenir à la page d'accueil</a>
+
+{% endblock content %}
